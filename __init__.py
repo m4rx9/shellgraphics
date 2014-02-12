@@ -1,1 +1,1 @@
-from ShellGraphics import *
+from shellgraphics import *

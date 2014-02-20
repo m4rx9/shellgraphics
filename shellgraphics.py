@@ -159,7 +159,7 @@ def pprogress_line(step, amount,length_the_bar=terminal_length, verbose=True):
     #
     #  length_the_bar 
     #
-    length_the_bar=length_the_bar-15
+    #length_the_bar=length_the_bar#-15
     #
     done=int((float(percent)*length_the_bar)/100) # 1.4 % -> 1
     #
@@ -169,8 +169,7 @@ def pprogress_line(step, amount,length_the_bar=terminal_length, verbose=True):
     #
     #for done in range(1,100): to test
     #print '#',step,';',percent, '%'            
-    if verbose: print '['+'='*done+''+' '*(length_the_bar-done)+']',' ',step, round(percent,2), '%',amount
-    return True
+    return ' '.join(['[' + '+' *done+''+' '*(length_the_bar-done)+']',' ',str(step), str(round(percent,2)), '%',str(amount)])
 
 
 def pformat_line(name, value='',char="#", verbose=True, wide=terminal_length):
@@ -342,9 +341,9 @@ if __name__ == '__main__':
         phr_text('SimRNA')
 
         for i in range(1,4):
-                pprogress_line(i,10)
-                sys.stdout.write("\033[F") # Cursor up one line - works in oneline!
-                time.sleep(1)
+            print pprogress_line(i,10)
+            sys.stdout.write("\033[F") # Cursor up one line - works in oneline!
+            time.sleep(1)
         pbr()
 
         Title()

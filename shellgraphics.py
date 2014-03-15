@@ -136,24 +136,25 @@ def pbanner(text, char="#", verbose=True):
     return True
 
 def pprogress_line(step, amount,length_the_bar=terminal_length, verbose=True):
-    """
-    GET:
-    - step, c(ounter) in loop,
-    - amount, to count a percent,
-    - length_the_bar of whole progress bar (use to scale)
-    ----------------------------------------------------
-    DO:
-    Generate:
-    # [===================================================X----] # 36412 ; 94.0878552972 % ; 36500
-    -----------------
-    HOW USE:
-    c=0
-    len_of_iter=len(list)
-    for i in list:
-        c+=1
-        toolboX.progress_line(c,len_of_iter,verbose=True)
-    RETURN:
-    - True if ok
+    """Generate a progress bar::
+
+      [===================================================X----] # 36412 ; 94.0878552972 % ; 36500
+
+    :params:
+
+     - step, c(ounter) in loop,
+     - amount, to count a percent,
+     - length_the_bar of whole progress bar (use to scale)
+
+    how to use it::
+
+        c=0
+        len_of_iter=len(list)
+        for i in list:
+            c+=1
+            toolboX.progress_line(c,len_of_iter,verbose=True)
+    
+    :return: string
     """
     percent=float(step)/amount * 100
     #

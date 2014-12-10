@@ -74,10 +74,10 @@ class Table(object):
 
 
 def table_demo():
-    t = Table(['fn','SimRNA', 'FARNA'])
+    t = Table(['fn','SimRNA', 'FARNA', 'X'])
     t.show_header()
-    t.show_row(['1xjrA_output3-000142_AA.pdb', '-35.861', '44.043'])
-    t.show_row(['1xjrA_output3-000142_AA.pdb', '-34.861', '322.12'])
+    t.show_row(['1xjrA_output3-000142_AA.pdb', '-35.861', '44.043', '111'])
+    t.show_row(['1xjrA_output3-000142_AA.pdb', '-34.861', '322.12', '443'])
     phr()
 
 
@@ -159,7 +159,7 @@ def pprogress_line(step, amount, text, length_the_bar=terminal_length, verbose=T
     #
     #  length_the_bar 
     #
-    length_the_bar=length_the_bar-15
+    #length_the_bar=length_the_bar#-15
     #
     done=int((float(percent)*length_the_bar)/100) # 1.4 % -> 1
     #
@@ -345,17 +345,6 @@ if __name__ == '__main__':
                 pprogress_line(i,5, 'text')
                 sys.stdout.write("\033[F") # Cursor up one line - works in oneline!
                 time.sleep(1)
-
-        print
-        for i in range(1,6):
-            for i in range(1,3):
-                print '.',
-                time.sleep(1)
-            print 
-            sys.stdout.write("\033[F") # Cursor up one line - works in oneline!
-            time.sleep(1)
-
-        pbr()
 
         Title()
         table_demo()

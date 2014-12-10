@@ -135,7 +135,7 @@ def pbanner(text, char="#", verbose=True):
         print char * len + '\n' + char +' '+ text.ljust(len-3)+ char  +'\n'+ char * len
     return True
 
-def pprogress_line(step, amount,length_the_bar=terminal_length, verbose=True):
+def pprogress_line(step, amount, text, length_the_bar=terminal_length, verbose=True):
     """
     GET:
     - step, c(ounter) in loop,
@@ -169,7 +169,7 @@ def pprogress_line(step, amount,length_the_bar=terminal_length, verbose=True):
     #
     #for done in range(1,100): to test
     #print '#',step,';',percent, '%'            
-    if verbose: print '['+'='*done+''+' '*(length_the_bar-done)+']',' ',step, round(percent,2), '%',amount
+    if verbose: print '['+'-'*done+''+' '*(length_the_bar-done)+']',' ',str(step).rjust(4), str(round(percent,2)).ljust(4), '%',amount, text
     return True
 
 
@@ -341,10 +341,20 @@ if __name__ == '__main__':
         pbanner('mqaprna.py', '*')
         phr_text('SimRNA')
 
-        for i in range(1,4):
-                pprogress_line(i,10)
+        for i in range(1,6):
+                pprogress_line(i,5, 'text')
                 sys.stdout.write("\033[F") # Cursor up one line - works in oneline!
                 time.sleep(1)
+
+        print
+        for i in range(1,6):
+            for i in range(1,3):
+                print '.',
+                time.sleep(1)
+            print 
+            sys.stdout.write("\033[F") # Cursor up one line - works in oneline!
+            time.sleep(1)
+
         pbr()
 
         Title()

@@ -41,7 +41,7 @@ import sys
 import time
 import subprocess
 
-terminal_length = 100
+terminal_length = 80
 color_mode = True
 
 class Title(object):

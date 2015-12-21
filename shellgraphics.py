@@ -74,10 +74,10 @@ class Table(object):
 
 
 def table_demo():
-    t = Table(['fn','SimRNA', 'FARNA'])
+    t = Table(['fn','SimRNA', 'FARNA', 'X'])
     t.show_header()
-    t.show_row(['1xjrA_output3-000142_AA.pdb', '-35.861', '44.043'])
-    t.show_row(['1xjrA_output3-000142_AA.pdb', '-34.861', '322.12'])
+    t.show_row(['1xjrA_output3-000142_AA.pdb', '-35.861', '44.043', '111'])
+    t.show_row(['1xjrA_output3-000142_AA.pdb', '-34.861', '322.12', '443'])
     phr()
 
 
@@ -135,6 +135,7 @@ def pbanner(text, char="#", verbose=True):
         print char * len + '\n' + char +' '+ text.ljust(len-3)+ char  +'\n'+ char * len
     return True
 
+
 def pprogress_line(step, amount,length_the_bar=terminal_length, verbose=True):
     """Generate a progress bar::
 
@@ -170,7 +171,8 @@ def pprogress_line(step, amount,length_the_bar=terminal_length, verbose=True):
     #
     #for done in range(1,100): to test
     #print '#',step,';',percent, '%'            
-    return ' '.join(['[' + '+' *done+''+' '*(length_the_bar-done)+']',' ',str(step), str(round(percent,2)), '%',str(amount)])
+    if verbose: print '['+'-'*done+''+' '*(length_the_bar-done)+']',' ',str(step).rjust(4), str(round(percent,2)).ljust(4), '%',amount, text
+    return True
 
 
 def pformat_line(name, value='',char="#", verbose=True, wide=terminal_length):
@@ -342,11 +344,10 @@ if __name__ == '__main__':
         pbanner('mqaprna.py', '*')
         phr_text('SimRNA')
 
-        for i in range(1,4):
-            print pprogress_line(i,10)
-            sys.stdout.write("\033[F") # Cursor up one line - works in oneline!
-            time.sleep(1)
-        pbr()
+        for i in range(1,6):
+                pprogress_line(i,5, 'text')
+                sys.stdout.write("\033[F") # Cursor up one line - works in oneline!
+                time.sleep(1)
 
         Title()
         table_demo()

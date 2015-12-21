@@ -105,9 +105,9 @@ def pbanner_simply(text):
     """
     pbr()
     if color_mode:
-        print '', '\033[1;34m' + text + '\033[1;m'
+        print '\033[1;34m' + text + '\033[1;m'
     else:
-        print '', text
+        print text
     pbr()
 
 
@@ -297,8 +297,9 @@ def poption(name, value):
 def poptions(dictionary):
     """Get dict and print as options
     """
+    print '--------------------------  ----------------------------------------------------'
     for d in dictionary.keys():
-        print '', d.ljust(20), 
+        print d.ljust(27), 
         value = dictionary[d]        
         if (value == 'off' or value == False or not value) and color_mode:
             print '\033[1;31moff\033[1;m'  # red
